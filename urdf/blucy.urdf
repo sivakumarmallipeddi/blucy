@@ -1,0 +1,1397 @@
+<!--?xml version="1.0" encoding="utf-8"? -->
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="blucy">
+  <material name="black">
+    <color rgba="0.15 0.15 0.15 1"/>
+  </material>
+  <material name="red">
+    <color rgba="1 0 0 1"/>
+  </material>
+  <material name="gray">
+    <color rgba="0.75 0.75 0.75 1"/>
+  </material>
+  <material name="dark_red">
+    <color rgba="0.8 0 0 1"/>
+  </material>
+  <!-- Links and Joints -->
+  <!-- Base Link -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.078632 0.000641 0.07911"
+        rpy="0 0 0" />
+      <mass
+        value="92.916038" />
+      <inertia
+        ixx="4.253521"
+        ixy="-0.023251"
+        ixz="0.07405"
+        iyy="23.791254"
+        iyz="0.0017"
+        izz="21.41962" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="black">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <link
+    name="propeller1">
+    <inertial>
+      <origin
+        xyz="-0.021949 -5E-06 4E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="0.000107"
+        ixy="0"
+        ixz="0"
+        iyy="6.5E-05"
+        iyz="0"
+        izz="6.5E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller1.STL" />
+      </geometry>
+      <material
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="propeller1">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="propeller1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.79491 0.23307 0.014352"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller1" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller2">
+    <inertial>
+      <origin
+        xyz="-0.021949 3E-06 5E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="0.000107"
+        ixy="0"
+        ixz="0"
+        iyy="6.5E-05"
+        iyz="0"
+        izz="6.5E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller2.STL" />
+      </geometry>
+      <material
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="propeller2">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="propeller2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.79491 -0.23193 0.014352"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller2" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller3">
+    <inertial>
+      <origin
+        xyz="-4E-06 5E-06 0.021949"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="6.5E-05"
+        ixy="0"
+        ixz="0"
+        iyy="6.5E-05"
+        iyz="0"
+        izz="0.000107" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller3.STL" />
+      </geometry>
+      <material
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="propeller3">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="propeller3_joint"
+    type="continuous">
+    <origin
+      xyz="0.63209 0.00057381 0.34835"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller4">
+    <inertial>
+      <origin
+        xyz="-6E-06 0 0.021949"
+        rpy="0 0 0" />
+      <mass
+        value="0.086565" />
+      <inertia
+        ixx="6.5E-05"
+        ixy="0"
+        ixz="0"
+        iyy="6.5E-05"
+        iyz="0"
+        izz="0.000107" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller4.STL" />
+      </geometry>
+      <material name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="propeller4">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="propeller4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.81791 0.00057381 0.34835"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller4" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller5">
+    <inertial>
+      <origin
+        xyz="-6E-06 0.021949 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="6.5E-05"
+        ixy="0"
+        ixz="0"
+        iyy="0.000107"
+        iyz="0"
+        izz="6.5E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller5.STL" />
+      </geometry>
+      <material 
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="propeller5">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="propeller5_joint"
+    type="continuous">
+    <origin
+      xyz="0.50759 0.090574 0.13635"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller5" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller6">
+    <inertial>
+      <origin
+        xyz="6E-06 -0.021949 -3E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="6.5E-05"
+        ixy="0"
+        ixz="0"
+        iyy="0.000107"
+        iyz="0"
+        izz="6.5E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller6.STL" />
+      </geometry>
+      <material
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/propeller6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="propeller6">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="propeller6_joint"
+    type="continuous">
+    <origin
+      xyz="-0.64241 -0.089426 0.13635"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller6" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="multibeam">
+    <inertial>
+      <origin
+        xyz="0.001883 -3E-06 0.069564"
+        rpy="0 0 0" />
+      <mass
+        value="5.0226" />
+      <inertia
+        ixx="0.023532"
+        ixy="-3E-06"
+        ixz="-8.3E-05"
+        iyy="0.016469"
+        iyz="2.2E-05"
+        izz="0.02491" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/multibeam.STL" />
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/multibeam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="multibeam_joint"
+    type="fixed">
+    <origin
+      xyz="0.68799 0.00066019 -0.26331"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="multibeam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="nikon_camera">
+    <inertial>
+      <origin
+        xyz="0 0 0.10988"
+        rpy="0 0 0" />
+      <mass
+        value="12.782" />
+      <inertia
+        ixx="0.13023"
+        ixy="0"
+        ixz="0"
+        iyy="0.1289"
+        iyz="0"
+        izz="0.083075" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/nikon_camera.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/nikon_camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="nikon_camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.48259 0.013074 -0.25065"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="nikon_camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="dvl">
+    <inertial>
+      <origin
+        xyz="0.01692 -0.006011 0.095644"
+        rpy="0 0 0" />
+      <mass
+        value="4.8765" />
+      <inertia
+        ixx="0.034745"
+        ixy="1.1E-05"
+        ixz="-0.005105"
+        iyy="0.031422"
+        iyz="6E-06"
+        izz="0.029824" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/dvl.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/dvl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dvl_joint"
+    type="fixed">
+    <origin
+      xyz="-0.50942 -0.0059041 -0.29765"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="dvl" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="fog">
+    <inertial>
+      <origin
+        xyz="-0.091544 3.6E-05 3.6E-05"
+        rpy="0 0 0" />
+      <mass
+        value="12.63" />
+      <inertia
+        ixx="0.083754"
+        ixy="4.4E-05"
+        ixz="4.4E-05"
+        iyy="0.12"
+        iyz="-2.4E-05"
+        izz="0.12" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/fog.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/fog.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fog_joint"
+    type="fixed">
+    <origin
+      xyz="-0.20191 -0.011926 -0.12565"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="fog" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="altimeter">
+    <inertial>
+      <origin
+        xyz="0 1E-06 0.002977"
+        rpy="0 0 0" />
+      <mass
+        value="1.15" />
+      <inertia
+        ixx="0.000157"
+        ixy="0"
+        ixz="0"
+        iyy="0.000157"
+        iyz="0"
+        izz="0.000308" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/altimeter.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/altimeter.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="altimeter_joint"
+    type="fixed">
+    <origin
+      xyz="-0.95191 0.00057254 -0.28565"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="altimeter" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="mini_ct">
+    <inertial>
+      <origin
+        xyz="-0.12053 -0.000149 -2E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.6" />
+      <inertia
+        ixx="4.5E-05"
+        ixy="-2E-06"
+        ixz="0"
+        iyy="0.001189"
+        iyz="0"
+        izz="0.001189" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/mini_ct.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/mini_ct.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mini_ct_joint"
+    type="fixed">
+    <origin
+      xyz="0.69259 -0.099426 -0.28065"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="mini_ct" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="mini_svs">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/mini_svs.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/mini_svs.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mini_svs_joint"
+    type="fixed">
+    <origin
+      xyz="0.69259 0.10057 -0.28065"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="mini_svs" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="pilot_camera">
+    <inertial>
+      <origin
+        xyz="-0.12657 0 0.031558"
+        rpy="0 0 0" />
+      <mass
+        value="1.8034" />
+      <inertia
+        ixx="0.004493"
+        ixy="3E-06"
+        ixz="0.003387"
+        iyy="0.017565"
+        iyz="1.1E-05"
+        izz="0.017565" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/pilot_camera.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/pilot_camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pilot_camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.873590710689131 0.00057381212163215 -0.0676203468725755"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="pilot_camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="microstrain">
+    <inertial>
+      <origin
+        xyz="0 0 -0.049475"
+        rpy="0 0 0" />
+      <mass
+        value="0.9" />
+      <inertia
+        ixx="0.001778"
+        ixy="0"
+        ixz="0"
+        iyy="0.001778"
+        iyz="0"
+        izz="0.001735" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/microstrain.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/microstrain.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="microstrain_joint"
+    type="fixed">
+    <origin
+      xyz="0.42359 0.00057381 0.47035"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="microstrain" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="led1">
+    <inertial>
+      <origin
+        xyz="-0.020793 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.76684" />
+      <inertia
+        ixx="0.000208"
+        ixy="0"
+        ixz="0"
+        iyy="0.000469"
+        iyz="0"
+        izz="0.000469" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/led1.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/led1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="led1_joint"
+    type="fixed">
+    <origin
+      xyz="0.78101 0.19575 -0.047148"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="led1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="led2">
+    <inertial>
+      <origin
+        xyz="-0.020793 0 0.020793"
+        rpy="0 0 0" />
+      <mass
+        value="0.76684" />
+      <inertia
+        ixx="0.000208"
+        ixy="0"
+        ixz="0"
+        iyy="0.000469"
+        iyz="0"
+        izz="0.000469" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/led2.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/led2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="led2_joint"
+    type="fixed">
+    <origin
+      xyz="0.78101 -0.1946 -0.049148"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="led2" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="led3">
+    <inertial>
+      <origin
+        xyz="-0.015983 -0.000173 0.013496"
+        rpy="0 0 0" />
+      <mass
+        value="0.78149" />
+      <inertia
+        ixx="0.000325"
+        ixy="-1E-06"
+        ixz="0.000127"
+        iyy="0.000475"
+        iyz="1E-06"
+        izz="0.000369" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/led3.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/led3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="led3_joint"
+    type="fixed">
+    <origin
+      xyz="0.71265 0.2062 -0.25332"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="led3" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="led4">
+    <inertial>
+      <origin
+        xyz="-0.016067 0.000173 0.013397"
+        rpy="0 0 0" />
+      <mass
+        value="0.78149" />
+      <inertia
+        ixx="0.000325"
+        ixy="1E-06"
+        ixz="0.000127"
+        iyy="0.000475"
+        iyz="-1E-06"
+        izz="0.000369" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/led4.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/led4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="led4_joint"
+    type="fixed">
+    <origin
+      xyz="0.71265 -0.20505 -0.25332"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="led4" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="bled1">
+    <inertial>
+      <origin
+        xyz="-6.5E-05 0.000173 0.020919"
+        rpy="0 0 0" />
+      <mass
+        value="0.78149" />
+      <inertia
+        ixx="0.000476"
+        ixy="0"
+        ixz="0"
+        iyy="0.000475"
+        iyz="-1E-06"
+        izz="0.000219" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/bled1.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/bled1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bled1_joint"
+    type="fixed">
+    <origin
+      xyz="0.24509 0.098574 -0.28815"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="bled1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="bled2">
+    <inertial>
+      <origin
+        xyz="6.5E-05 -0.000173 0.020919"
+        rpy="0 0 0" />
+      <mass
+        value="0.78149" />
+      <inertia
+        ixx="0.000476"
+        ixy="0"
+        ixz="0"
+        iyy="0.000475"
+        iyz="1E-06"
+        izz="0.000219" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/bled2.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/bled2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bled2_joint"
+    type="fixed">
+    <origin
+      xyz="0.24509 -0.097426 -0.28815"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="bled2" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="leftcover">
+    <inertial>
+      <origin
+        xyz="-0.099372 -0.013309 0.000491"
+        rpy="0 0 0" />
+      <mass
+        value="3.6386" />
+      <inertia
+        ixx="0.10618"
+        ixy="-0.000723"
+        ixz="0.007023"
+        iyy="0.4638"
+        iyz="5.3E-05"
+        izz="0.35797" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/leftcover.STL" />
+      </geometry>
+      <material
+        name="dark_red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/leftcover.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="leftcover">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="leftcover_joint"
+    type="fixed">
+    <origin
+      xyz="0.17515 0.17557 -0.011585"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="leftcover" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="rightcover">
+    <inertial>
+      <origin
+        xyz="-0.099367 0.013309 0.000492"
+        rpy="0 0 0" />
+      <mass
+        value="3.6386" />
+      <inertia
+        ixx="0.10618"
+        ixy="0.000723"
+        ixz="0.007021"
+        iyy="0.4638"
+        iyz="-5.3E-05"
+        izz="0.46381" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/rightcover.STL" />
+      </geometry>
+      <material
+        name="dark_red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/rightcover.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="rightcover">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="rightcover_joint"
+    type="fixed">
+    <origin
+      xyz="0.17515 -0.17443 -0.011585"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rightcover" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="topfoam">
+    <inertial>
+      <origin
+        xyz="-0.010983 1E-06 -0.012707"
+        rpy="0 0 0" />
+      <mass
+        value="16.286" />
+      <inertia
+        ixx="0.17331"
+        ixy="1E-06"
+        ixz="0.001457"
+        iyy="4.018"
+        iyz="0"
+        izz="4.1493" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/topfoam.STL" />
+      </geometry>
+      <material
+        name="dark_red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/topfoam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="topfoam">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="topfoam_joint"
+    type="fixed">
+    <origin
+      xyz="-0.04631 0.00057242 0.37435"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="topfoam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="battery">
+    <inertial>
+      <origin
+        xyz="-0.00371 -0.000236 -0.000195"
+        rpy="0 0 0" />
+      <mass
+        value="52" />
+      <inertia
+        ixx="0.84864"
+        ixy="0.00036"
+        ixz="-0.000176"
+        iyy="1.6164"
+        iyz="-0.000678"
+        izz="1.6168" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/battery.STL" />
+      </geometry>
+      <material
+        name="gray">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://meshes/battery.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="battery_joint"
+    type="fixed">
+    <origin
+      xyz="0.016985 0.00072413 -0.13155"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="battery" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

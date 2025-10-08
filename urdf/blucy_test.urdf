@@ -1,0 +1,400 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="blucy">
+  <material name="black">
+    <color rgba="0.15 0.15 0.15 1"/>
+  </material>
+  <material name="red">
+    <color rgba="1 0 0 1"/>
+  </material>
+  <material name="gray">
+    <color rgba="0.75 0.75 0.75 1"/>
+  </material>
+  <material name="dark_red">
+    <color rgba="0.8 0 0 1"/>
+  </material>
+  <!-- Links and Joints -->
+  <!-- Base Link -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.078632 0.000641 0.07911"
+        rpy="0 0 0" />
+      <mass
+        value="92.916038" />
+      <inertia
+        ixx="4.253521"
+        ixy="-0.023251"
+        ixz="0.07405"
+        iyy="23.791254"
+        iyz="0.0017"
+        izz="21.41962" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/base_link.STL"  />
+      </geometry>
+      <material
+        name="black">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <link
+    name="propeller1">
+    <inertial>
+      <origin
+        xyz="-0.021949 -5E-06 4E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="0.000107"
+        ixy="0"
+        ixz="0"
+        iyy="6.5E-05"
+        iyz="0"
+        izz="6.5E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller1.STL" />
+      </geometry>
+      <material
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="propeller1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.79491 0.23307 0.014352"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller1" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller2">
+    <inertial>
+      <origin
+        xyz="-0.021949 3E-06 5E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="0.000107"
+        ixy="0"
+        ixz="0"
+        iyy="6.5E-05"
+        iyz="0"
+        izz="6.5E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller2.STL" />
+      </geometry>
+      <material
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="propeller2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.79491 -0.23193 0.014352"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller2" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller3">
+    <inertial>
+      <origin
+        xyz="-4E-06 5E-06 0.021949"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="6.5E-05"
+        ixy="0"
+        ixz="0"
+        iyy="6.5E-05"
+        iyz="0"
+        izz="0.000107" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller3.STL" />
+      </geometry>
+      <material
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="propeller3_joint"
+    type="continuous">
+    <origin
+      xyz="0.63209 0.00057381 0.34835"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller4">
+    <inertial>
+      <origin
+        xyz="-6E-06 0 0.021949"
+        rpy="0 0 0" />
+      <mass
+        value="0.086565" />
+      <inertia
+        ixx="6.5E-05"
+        ixy="0"
+        ixz="0"
+        iyy="6.5E-05"
+        iyz="0"
+        izz="0.000107" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller4.STL" />
+      </geometry>
+      <material name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="propeller4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.81791 0.00057381 0.34835"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller4" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller5">
+    <inertial>
+      <origin
+        xyz="-6E-06 0.021949 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="6.5E-05"
+        ixy="0"
+        ixz="0"
+        iyy="0.000107"
+        iyz="0"
+        izz="6.5E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller5.STL" />
+      </geometry>
+      <material 
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="propeller5_joint"
+    type="continuous">
+    <origin
+      xyz="0.50759 0.090574 0.13635"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller5" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+  <link
+    name="propeller6">
+    <inertial>
+      <origin
+        xyz="6E-06 -0.021949 -3E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.086465" />
+      <inertia
+        ixx="6.5E-05"
+        ixy="0"
+        ixz="0"
+        iyy="0.000107"
+        iyz="0"
+        izz="6.5E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller6.STL" />
+      </geometry>
+      <material
+        name="red">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://blucy/meshes/propeller6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="propeller6_joint"
+    type="continuous">
+    <origin
+      xyz="-0.64241 -0.089426 0.13635"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller6" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="0.76"
+      velocity="314.16" />
+    <dynamics
+      damping="4.97E-06"
+      friction="0.00386" />
+  </joint>
+</robot>
