@@ -9,8 +9,9 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     pkg_blucy_path = get_package_share_directory('blucy')
     urdf_file = os.path.join(pkg_blucy_path, 'urdf', 'blucy.urdf')
-    world_file = os.path.join(pkg_blucy_path, 'world', 'emptyworld.world')
-    ign_path = os.path.join(pkg_blucy_path)
+    world_file = os.path.join(pkg_blucy_path, 'world', 'underwater.world')
+    gazebo_models_path = os.path.expanduser('~/.gazebo/models')
+    ign_path = f"{pkg_blucy_path}:{gazebo_models_path}"
 
     with open(urdf_file, 'r') as infp:
         robot_description = infp.read()
