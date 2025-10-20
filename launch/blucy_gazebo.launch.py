@@ -53,7 +53,10 @@ def generate_launch_description():
                 arguments=[
                     '-file', urdf_file,
                     '-name', 'blucy',
-                    '-x', '0.0', '-y', '0.0', '-z', '5.0'
+                    '-x', '0.0', '-y', '0.0', '-z', '5.0',
+                    '-R', '0.0',   # roll 
+                    '-P', '0.0',   # pitch
+                    '-Y', '0.0'    # yaw
                 ],
                 output='screen'
             )]

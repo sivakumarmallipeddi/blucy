@@ -1,4 +1,4 @@
-<!--?xml version="1.0" encoding="utf-8"? -->
+<?xml version="1.0" encoding="utf-8"?>
 <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
@@ -58,7 +58,46 @@
   </link>
   <gazebo reference="base_link">
     <material>Gazebo/DarkGrey</material>
+  </gazebo> 
+
+  <gazebo>
+    <plugin name="blucy_plugins::ApplyBuoyancySystem"
+      filename="/home/siva/ros2_ws/install/blucy/lib/blucy/libApplyBuoyancySystem.so">
+      <model_name>blucy</model_name>
+      <link_name>base_link</link_name>
+      <force>0 0 2095</force>
+      <center_of_buoyancy>-0.00015 0.0 0.07</center_of_buoyancy>
+    </plugin>
   </gazebo>
+
+  <gazebo>
+    <plugin
+        filename="ignition-gazebo-hydrodynamics-system"
+        name="ignition::gazebo::systems::Hydrodynamics">
+      <link_name>base_link</link_name>
+
+      <xDotU>-28.52</xDotU>
+      <yDotV>-163.65</yDotV>
+      <zDotW>-92.79</zDotW>
+      <kDotP>-0.0758</kDotP>
+      <mDotQ>-17.10</mDotQ>
+      <nDotR>-33.60</nDotR>
+      <xUabsU>-61.96</xUabsU>
+      <xU>-2.61</xU>
+      <yVabsV>-595.24</yVabsV>
+      <yV>-24.72</yV>
+      <zWabsW>-243.04</zWabsW>
+      <zW>-2.82</zW>
+      <kPabsP>-19.10</kPabsP>
+      <kP>-0.0362</kP>
+      <mQabsQ>-95.52</mQabsQ>
+      <mQ>-0.063</mQ>
+      <nRabsR>-240.4</nRabsR>
+      <nR>-0.045</nR>
+
+    </plugin>
+  </gazebo>
+ 
   <link
     name="propeller1">
     <inertial>
@@ -97,6 +136,7 @@
       </geometry>
     </collision>
   </link>
+ 
   <gazebo reference="propeller1">
     <material>Gazebo/Red</material>
   </gazebo>

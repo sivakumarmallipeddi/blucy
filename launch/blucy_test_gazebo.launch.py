@@ -42,7 +42,7 @@ def generate_launch_description():
             arguments=[
                 '-entity', 'blucy',
                 '-file', urdf_file,
-                '-x', '0.0', '-y', '0.0', '-z', '1.0'
+                'x', '0.0', 'y', '0.0', 'z', '10.0'
             ],
             output='screen'
         )
