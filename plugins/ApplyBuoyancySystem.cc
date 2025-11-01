@@ -12,22 +12,28 @@ using namespace blucy_plugins;
 using namespace ignition;
 using namespace gazebo;
 
-/////////////////////////////////////////////////
+//////////////////////////////////////////////////
 void ApplyBuoyancySystem::Configure(const Entity &entity,
                                     const std::shared_ptr<const sdf::Element> &sdf,
                                     EntityComponentManager &ecm,
                                     EventManager &)
 {
-  this->modelEntity = entity;
+  this->modelEntity_ = entity;
 
-  // === Read parameters from URDF/SDF ===
+  // === Read SDF parameters ===
   if (sdf->HasElement("model_name"))
-    this->modelName = sdf->Get<std::string>("model_name");
+  {
+    this->modelName_ = sdf->Get<std::string>("model_name");
+  }
   else
-    ignwarn << "[ApplyBuoyancySystem] <model_name> not specified, using default model entity.\n";
+  {
+    ignwarn << "[ApplyBuoyancySystem] <model_name> not specified. Using default model entity.\n";
+  }
 
   if (sdf->HasElement("link_name"))
-    this->linkName = sdf->Get<std::string>("link_name");
+  {
+    this->linkName_ = sdf->Get<std::string>("link_name");
+  }
   else
   {
     ignerr << "[ApplyBuoyancySystem] <link_name> must be specified in plugin.\n";
@@ -36,69 +42,65 @@ void ApplyBuoyancySystem::Configure(const Entity &entity,
 
   if (sdf->HasElement("force"))
   {
-    this->localForce = sdf->Get<ignition::math::Vector3d>("force");
-    ignmsg << "[ApplyBuoyancySystem]  Force (local): " << this->localForce << " N\n";
+    this->localForce_ = sdf->Get<ignition::math::Vector3d>("force");
   }
-  else
-    this->localForce = ignition::math::Vector3d(0, 0, 0);
 
   if (sdf->HasElement("center_of_buoyancy"))
   {
-    this->localPoint = sdf->Get<ignition::math::Vector3d>("center_of_buoyancy");
-    ignmsg << "[ApplyBuoyancySystem]  Center of Buoyancy (local): " << this->localPoint << " m\n";
+    this->localPoint_ = sdf->Get<ignition::math::Vector3d>("center_of_buoyancy");
   }
-  else
-    this->localPoint = ignition::math::Vector3d(0, 0, 0);
 
   // === Find link entity ===
-  Model model(this->modelEntity);
-  this->linkEntity = model.LinkByName(ecm, this->linkName);
+  Model model(this->modelEntity_);
+  this->linkEntity_ = model.LinkByName(ecm, this->linkName_);
 
-  if (this->linkEntity == kNullEntity)
+  if (this->linkEntity_ == kNullEntity)
   {
-    ignwarn << "[ApplyBuoyancySystem] Link [" << this->linkName
-            << "] not found in model [" << this->modelName << "]\n";
+    ignwarn << "[ApplyBuoyancySystem] Link [" << this->linkName_
+            << "] not found in model [" << this->modelName_ << "]\n";
     return;
   }
 
-  // === Enable velocity checks to create required components ===
-  Link link(this->linkEntity);
-  link.EnableVelocityChecks(ecm);  // <---- ESSENTIAL LINE!
+  // Enable velocity checks to ensure components exist (important for applying forces)
+  Link link(this->linkEntity_);
+  link.EnableVelocityChecks(ecm);
 
-  ignmsg << "[ApplyBuoyancySystem] Configured for model [" << this->modelName
-         << "], link [" << this->linkName << "]\n";
-  ignmsg << "  Force: " << this->localForce << " N\n";
-  ignmsg << "  Center of Buoyancy (local): " << this->localPoint << " m\n";
+  // === Configuration summary ===
+  ignmsg << "[ApplyBuoyancySystem] Configured successfully:\n"
+         << "  Model: " << (this->modelName_.empty() ? "<unknown>" : this->modelName_) << "\n"
+         << "  Link: " << this->linkName_ << "\n"
+         << "  Local Force: " << this->localForce_ << " [N]\n"
+         << "  Center of Buoyancy: " << this->localPoint_ << " [m]\n";
 }
 
-/////////////////////////////////////////////////
+//////////////////////////////////////////////////
 void ApplyBuoyancySystem::PreUpdate(const UpdateInfo &info,
                                     EntityComponentManager &ecm)
 {
   // Skip if simulation is paused or link invalid
-  if (info.paused || this->linkEntity == kNullEntity)
+  if (info.paused || this->linkEntity_ == kNullEntity)
     return;
 
-  Link link(this->linkEntity);
+  Link link(this->linkEntity_);
   if (!link.Valid(ecm))
     return;
 
-  // Get link world pose
-  auto poseComp = ecm.Component<components::Pose>(this->linkEntity);
+  // === Retrieve world pose of link ===
+  auto poseComp = ecm.Component<components::Pose>(this->linkEntity_);
   if (!poseComp)
     return;
 
   const ignition::math::Pose3d &linkPose = poseComp->Data();
 
-  // Convert buoyancy force from link frame to world frame
-  ignition::math::Vector3d forceWorld = linkPose.Rot().RotateVector(this->localForce);
+  // === Convert buoyancy force from local link frame to world frame ===
+  ignition::math::Vector3d forceWorld = linkPose.Rot().RotateVector(this->localForce_);
 
-  // Apply the force at the offset relative to the link (link frame)
-  link.AddWorldForce(ecm, forceWorld, this->localPoint);
+  // === Apply the buoyancy force at the specified local offset ===
+  link.AddWorldForce(ecm, forceWorld, this->localPoint_);
 }
 
-/////////////////////////////////////////////////
-// Plugin registration
+//////////////////////////////////////////////////
+// === Plugin registration ===
 IGNITION_ADD_PLUGIN(
   blucy_plugins::ApplyBuoyancySystem,
   ignition::gazebo::System,

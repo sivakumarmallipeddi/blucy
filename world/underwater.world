@@ -3,7 +3,7 @@
   <world name="underwater_world">
 
     <physics name="1ms" type="ode">
-      <max_step_size>0.001</max_step_size>
+      <max_step_size>0.0005</max_step_size>
       <real_time_factor>1.0</real_time_factor>
     </physics>
     <plugin
@@ -23,11 +23,6 @@
       name="ignition::gazebo::systems::Contact">
     </plugin>
     
-    <!-- <plugin
-      filename="ignition-gazebo-buoyancy-system"
-      name="ignition::gazebo::systems::Buoyancy">
-      <uniform_fluid_density>1000</uniform_fluid_density>
-    </plugin> -->
     
     <!-- Visual Scene -->
     <scene>
@@ -49,7 +44,6 @@
       </attenuation>
       <direction>-0.5 0.1 -0.9</direction>
     </light>
-
 
     <include> 
       <pose>-5 0 0 0 0 0</pose> 

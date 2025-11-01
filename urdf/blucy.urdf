@@ -59,45 +59,56 @@
   <gazebo reference="base_link">
     <material>Gazebo/DarkGrey</material>
   </gazebo> 
-
   <gazebo>
     <plugin name="blucy_plugins::ApplyBuoyancySystem"
-      filename="/home/siva/ros2_ws/install/blucy/lib/blucy/libApplyBuoyancySystem.so">
+      filename="libApplyBuoyancySystem.so">
       <model_name>blucy</model_name>
       <link_name>base_link</link_name>
-      <force>0 0 2095</force>
-      <center_of_buoyancy>-0.00015 0.0 0.07</center_of_buoyancy>
+      <force>0 0 2088.57843</force>
+      <center_of_buoyancy>-0.0001 0.0 0.07</center_of_buoyancy>
     </plugin>
   </gazebo>
-
   <gazebo>
-    <plugin
-        filename="ignition-gazebo-hydrodynamics-system"
-        name="ignition::gazebo::systems::Hydrodynamics">
+    <plugin name="blucy_plugins::ApplyHydrodynamicSystem"
+        filename="libApplyHydrodynamicSystem.so">
+      <model_name>blucy</model_name>
       <link_name>base_link</link_name>
+      <water_density>1025</water_density>
 
-      <xDotU>-28.52</xDotU>
-      <yDotV>-163.65</yDotV>
-      <zDotW>-92.79</zDotW>
-      <kDotP>-0.0758</kDotP>
-      <mDotQ>-17.10</mDotQ>
-      <nDotR>-33.60</nDotR>
-      <xUabsU>-61.96</xUabsU>
-      <xU>-2.61</xU>
-      <yVabsV>-595.24</yVabsV>
-      <yV>-24.72</yV>
-      <zWabsW>-243.04</zWabsW>
-      <zW>-2.82</zW>
-      <kPabsP>-19.10</kPabsP>
-      <kP>-0.0362</kP>
-      <mQabsQ>-95.52</mQabsQ>
-      <mQ>-0.063</mQ>
-      <nRabsR>-240.4</nRabsR>
-      <nR>-0.045</nR>
+      <!-- Added mass matrix Ma (6x6, row-major) -->
+      <added_mass>
+        28.52 0 0 0 0 0
+        0 163.65 0 0 0 0
+        0 0 92.79 0 0 0
+        0 0 0 0.0758 0 0
+        0 0 0 0 17.10 0
+        0 0 0 0 0 33.60
+      </added_mass>
+
+      <!-- Linear damping matrix D_lin (6x6, row-major) -->
+      <linear_damping>
+        2.61 0 0 0 0 0
+        0 24.7185 0 1.4273 0 1.872
+        0 0 2.82 0 0.0706 0
+        0 0.8344 0 0.0362 0 -0.1432
+        0 0 1.71 0 0.063 0
+        0 11.2138 0 -0.4126 0 0.0448
+      </linear_damping>
+
+      <!-- Quadratic damping matrix D_quad (6x6, row-major) -->
+      <quadratic_damping>
+        61.96 0 0 0 0 0
+        0 595.24 0 0 0 0
+        0 0 243.04 0 0 0
+        0 0 0 19.10 0 0
+        0 0 0 0 95.52 0
+        0 0 0 0 0 240.4
+      </quadratic_damping>
 
     </plugin>
   </gazebo>
  
+  <!-- Properller1 Link -->
   <link
     name="propeller1">
     <inertial>
@@ -136,7 +147,6 @@
       </geometry>
     </collision>
   </link>
- 
   <gazebo reference="propeller1">
     <material>Gazebo/Red</material>
   </gazebo>
@@ -159,6 +169,24 @@
       damping="4.97E-06"
       friction="0.00386" />
   </joint>
+  <!-- <gazebo>
+    <plugin name="blucy_plugins::ApplyThrusterSystem" 
+      filename="libApplyThrusterSystem.so">
+      <link_name>propeller1</link_name>
+      <direction>1 0 0</direction>
+      <joint_name>propeller1_joint</joint_name>
+      <rotation_direction>-1</rotation_direction>
+      <D>0.145</D>
+      <rho>1025</rho>
+      <rpm_max>2000</rpm_max>
+      <rpm_min>-2000</rpm_min>
+      <rpm>-2000</rpm>
+      <base_link_name>base_link</base_link_name>
+      <rpm_topic>/blucy/thruster1/rpm</rpm_topic>
+    </plugin>
+  </gazebo> -->
+
+  <!-- Propeller2 Link -->
   <link
     name="propeller2">
     <inertial>
@@ -219,6 +247,24 @@
       damping="4.97E-06"
       friction="0.00386" />
   </joint>
+  <!-- <gazebo>
+    <plugin name="blucy_plugins::ApplyThrusterSystem" 
+      filename="libApplyThrusterSystem.so">
+      <link_name>propeller2</link_name>
+      <joint_name>propeller2_joint</joint_name>
+      <direction>1 0 0</direction>
+      <rotation_direction>1</rotation_direction>
+      <D>0.145</D>
+      <rho>1025</rho>
+      <rpm_max>2000</rpm_max>
+      <rpm_min>-2000</rpm_min>
+      <rpm>2000</rpm>
+      <base_link_name>base_link</base_link_name>
+      <rpm_topic>/blucy/thruster2/rpm</rpm_topic>
+    </plugin>
+  </gazebo> -->
+
+  <!-- Propeller3 Link -->
   <link
     name="propeller3">
     <inertial>
@@ -279,6 +325,24 @@
       damping="4.97E-06"
       friction="0.00386" />
   </joint>
+  <gazebo>
+    <plugin name="blucy_plugins::ApplyThrusterSystem" 
+      filename="libApplyThrusterSystem.so">
+      <link_name>propeller3</link_name>
+      <joint_name>propeller3_joint</joint_name>
+      <direction>0 0 -1</direction>
+      <rotation_direction>1</rotation_direction>
+      <D>0.145</D>
+      <rho>1025</rho>
+      <rpm_max>3000</rpm_max>
+      <rpm_min>0</rpm_min>
+      <rpm>2000</rpm>
+      <base_link_name>base_link</base_link_name>
+      <rpm_topic>/blucy/thruster3/rpm</rpm_topic>
+    </plugin>
+  </gazebo>
+
+  <!-- Propeller4 Link -->
   <link
     name="propeller4">
     <inertial>
@@ -338,6 +402,24 @@
       damping="4.97E-06"
       friction="0.00386" />
   </joint>
+  <gazebo>
+    <plugin name="blucy_plugins::ApplyThrusterSystem" 
+      filename="libApplyThrusterSystem.so">
+      <link_name>propeller4</link_name>
+      <joint_name>propeller4_joint</joint_name>
+      <direction>0 0 -1</direction>
+      <rotation_direction>1</rotation_direction>
+      <D>0.145</D>
+      <rho>1025</rho>
+      <rpm_max>3000</rpm_max>
+      <rpm_min>0</rpm_min>
+      <rpm>2000</rpm>
+      <base_link_name>base_link</base_link_name>
+      <rpm_topic>/blucy/thruster4/rpm</rpm_topic>
+    </plugin>
+  </gazebo>
+
+  <!-- Propeller5 Link -->
   <link
     name="propeller5">
     <inertial>
@@ -398,6 +480,24 @@
       damping="4.97E-06"
       friction="0.00386" />
   </joint>
+  <!-- <gazebo>
+    <plugin name="blucy_plugins::ApplyThrusterSystem" 
+      filename="libApplyThrusterSystem.so">
+      <link_name>propeller5</link_name>
+      <joint_name>propeller5_joint</joint_name>
+      <direction>0 -1 0</direction>
+      <rotation_direction>1</rotation_direction>
+      <D>0.145</D>
+      <rho>1025</rho>
+      <rpm_max>3000</rpm_max>
+      <rpm_min>-3000</rpm_min>
+      <rpm>2000</rpm>
+      <base_link_name>base_link</base_link_name>
+      <rpm_topic>/blucy/thruster5/rpm</rpm_topic>
+    </plugin>
+  </gazebo> -->
+
+  <!-- Propeller6 Link -->
   <link
     name="propeller6">
     <inertial>
@@ -458,6 +558,23 @@
       damping="4.97E-06"
       friction="0.00386" />
   </joint>
+  <!-- <gazebo>
+    <plugin name="blucy_plugins::ApplyThrusterSystem" 
+      filename="libApplyThrusterSystem.so">
+      <link_name>propeller6</link_name>
+      <joint_name>propeller6_joint</joint_name>
+      <direction>0 1 0</direction>
+      <rotation_direction>-1</rotation_direction>
+      <D>0.145</D>
+      <rho>1025</rho>
+      <rpm_max>3000</rpm_max>
+      <rpm_min>-3000</rpm_min>
+      <rpm>-2000</rpm>
+      <base_link_name>base_link</base_link_name>
+      <rpm_topic>/blucy/thruster6/rpm</rpm_topic>
+    </plugin>
+  </gazebo> -->
+
   <link
     name="multibeam">
     <inertial>

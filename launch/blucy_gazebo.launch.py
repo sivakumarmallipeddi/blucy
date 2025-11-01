@@ -12,6 +12,7 @@ def generate_launch_description():
     world_file = os.path.join(pkg_blucy_path, 'world', 'underwater.world')
     gazebo_models_path = os.path.expanduser('~/.gazebo/models')
     ign_path = f"{pkg_blucy_path}:{gazebo_models_path}"
+    plugin_path = os.path.join(pkg_blucy_path.replace('/share/blucy',''), 'lib', 'blucy')  
 
     with open(urdf_file, 'r') as infp:
         robot_description = infp.read()
@@ -24,6 +25,13 @@ def generate_launch_description():
             value=ign_path
         ),
         LogInfo(msg=['IGN_GAZEBO_RESOURCE_PATH set to: ', ign_path]),
+
+        SetEnvironmentVariable(
+            name='IGN_GAZEBO_SYSTEM_PLUGIN_PATH',
+            value=plugin_path
+        ),
+        LogInfo(msg=['IGN_GAZEBO_SYSTEM_PLUGIN_PATH set to: ', plugin_path]),
+
         SetEnvironmentVariable(name='LIBGL_ALWAYS_SOFTWARE', value='1'),
 
         # Start Gazebo Fortress (Ignition GUI + Server)
@@ -41,6 +49,66 @@ def generate_launch_description():
             parameters=[{
                 'robot_description': ParameterValue(robot_description, value_type=str)
             }]
+        ),
+
+        Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            name='thruster1_bridge',
+            arguments=[
+                '/blucy/thruster1/rpm@std_msgs/msg/Float64@ignition.msgs.Double'
+            ],
+            output='screen'
+        ),
+
+        Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            name='thruster2_bridge',
+            arguments=[
+                '/blucy/thruster2/rpm@std_msgs/msg/Float64@ignition.msgs.Double'
+            ],
+            output='screen'
+        ),
+
+        Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            name='thruster3_bridge',
+            arguments=[
+                '/blucy/thruster3/rpm@std_msgs/msg/Float64@ignition.msgs.Double'
+            ],
+            output='screen'
+        ),
+
+        Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            name='thruster4_bridge',
+            arguments=[
+                '/blucy/thruster4/rpm@std_msgs/msg/Float64@ignition.msgs.Double'
+            ],
+            output='screen'
+        ),
+
+        Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            name='thruster5_bridge',
+            arguments=[
+                '/blucy/thruster5/rpm@std_msgs/msg/Float64@ignition.msgs.Double'
+            ],
+            output='screen'
+        ),
+
+        Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            name='thruster6_bridge',
+            arguments=[
+                '/blucy/thruster6/rpm@std_msgs/msg/Float64@ignition.msgs.Double'
+            ],
+            output='screen'
         ),
 
         # Spawn Blucy drone after delay to ensure world is loaded
